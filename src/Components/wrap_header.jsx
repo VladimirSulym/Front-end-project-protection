@@ -139,4 +139,4 @@ function WrapHeader () {
     )
 }
 
-export default WrapHeader;
+export default React.memo(WrapHeader);

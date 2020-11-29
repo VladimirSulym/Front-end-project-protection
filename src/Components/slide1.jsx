@@ -14,4 +14,4 @@ function Slide1 () {
     )
 }
 
-export default Slide1;
+export default React.memo(Slide1);

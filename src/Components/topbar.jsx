@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 function Topbar () {
     return (
@@ -24,4 +25,5 @@ function Topbar () {
     )
 }
 
-export default Topbar;
+
+export default React.memo(Topbar);

@@ -94,4 +94,4 @@ function Banner2 () {
     )
 }
 
-export default Banner2;
+export default React.memo(Banner2);
