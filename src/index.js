@@ -11,9 +11,13 @@ import {Provider} from 'react-redux';
 
 const store = configureStore();
 
+
+
 ReactDOM.render(
   <Provider store={store}>
+    <App_fur>
       {routes}
+    </App_fur>
   </Provider>,
   document.getElementById('root')
 );

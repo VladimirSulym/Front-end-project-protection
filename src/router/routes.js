@@ -7,7 +7,7 @@ import {
 import * as URL from './url';
 
 // импортируем страницы - это просто ваши компоненты, которые должны быть отрисованы для какого-то урла
-import RootPage from "../App_fur";
+import RootPage from "../pages/root";
 import About from "../pages/about";
 import Blog from "../pages/blog";
 import Cart from "../pages/cart";
@@ -30,7 +30,6 @@ export default (
             <Route exact path={ URL.VIEW_ONE } component={ PrdInfo } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
 
             {/*<Route exact path={ URL.MOVIES } component={ MovieListPage } />*/}
-
             {/*<Route exact path={ URL.VIEW_ONE_MOVIE } component={ ViewOneMoviePage } />*/}
 
         </Switch>

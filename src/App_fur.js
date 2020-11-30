@@ -10,16 +10,16 @@ import Blog from "./Components/blog";
 import Footer from "./Components/footer";
 import Shipping from "./Components/shipping";
 
-function App_fur() {
+function App_fur(props) {
   return (
-    <div className="App_fur">
+    <div>
       <header className="header1">
         {/*!--Header desktop --*/}
         <div className="container-menu-header">
 
           <Topbar />
-
-          <WrapHeader />
+            {props.children}
+          {/*<WrapHeader />*/}
 
         </div>
 

@@ -138,7 +138,7 @@ function Footer () {
                         <div className="w-size2 p-t-20">
                             {/*<!-- Button -->*/}
                             <button className="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-                                Subscribe
+                                Подписаться
                             </button>
                         </div>
                     </form>

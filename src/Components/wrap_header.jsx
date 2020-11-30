@@ -8,7 +8,7 @@ function WrapHeader (props) {
     function renderNavItem (item) {
         return (
             <li className={
-                props.location.pathname === item.url ? 'sale-noti' : ''
+                window.location.pathname === item.url ? 'sale-noti' : ''
             } key={item.url}>
                 <Link to={item.url}>{item.title}</Link>
             </li>
