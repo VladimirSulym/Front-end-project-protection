@@ -8,6 +8,13 @@ import * as URL from './url';
 
 // импортируем страницы - это просто ваши компоненты, которые должны быть отрисованы для какого-то урла
 import RootPage from "../App_fur";
+import About from "../pages/about";
+import Blog from "../pages/blog";
+import Cart from "../pages/cart";
+import Catalog from "../pages/catalog";
+import Contact from "../pages/contact";
+import PrdInfo from "../pages/prd_info";
+
 // import MovieListPage from "../pages/movies";
 // import ViewOneMoviePage from '../pages/view_one';
 
@@ -15,6 +22,12 @@ export default (
     <Router> { /* это Компонент-матрешка, он просто должен обернуть все то, что касается маршрутизации, и далее собственно этот компонент и занимается маршрутизацией */ }
         <Switch> { /* Компонент-матрешка, работает аналогично switch-case в JavaScript, только в качестве значения для сравнения использует URL из браузера  */ }
             <Route exact path={ URL.ROOT } component={ RootPage } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
+            <Route exact path={ URL.ABOUT } component={ About } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
+            <Route exact path={ URL.BLOG } component={ Blog } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
+            <Route exact path={ URL.CART } component={ Cart } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
+            <Route exact path={ URL.CATALOG } component={ Catalog } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
+            <Route exact path={ URL.CONTACT } component={ Contact } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
+            <Route exact path={ URL.VIEW_ONE } component={ PrdInfo } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
 
             {/*<Route exact path={ URL.MOVIES } component={ MovieListPage } />*/}
 
