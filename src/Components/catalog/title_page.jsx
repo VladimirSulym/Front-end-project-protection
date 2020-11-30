@@ -1,4 +1,5 @@
 import React from 'react';
+import slider_1 from './img/slider_1.jpg'
 import PropTypes from 'prop-types';
 
 
@@ -6,13 +7,13 @@ function TitlePage () {
     return (
         <section
             className="bg-title-page p-t-50 p-b-40 flex-col-c-m"
-            style={{backgroundImage: 'url(./images/heading-pages-02.jpg)'}}
+            style={{backgroundImage: `url(${slider_1})`}}
         >
             <h2 className="l-text2 t-center">
-                Women
+                Диваны
             </h2>
             <p className="m-text13 t-center">
-                New Arrivals Women Collection 2018
+                Новые поступления диванов Коллекции 2021
             </p>
         </section>
     );

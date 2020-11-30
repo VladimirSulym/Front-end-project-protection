@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
@@ -19,7 +18,7 @@ import PrdInfo from "../pages/prd_info";
 // import ViewOneMoviePage from '../pages/view_one';
 
 export default (
-    <Router> { /* это Компонент-матрешка, он просто должен обернуть все то, что касается маршрутизации, и далее собственно этот компонент и занимается маршрутизацией */ }
+
         <Switch> { /* Компонент-матрешка, работает аналогично switch-case в JavaScript, только в качестве значения для сравнения использует URL из браузера  */ }
             <Route exact path={ URL.ROOT } component={ RootPage } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
             <Route exact path={ URL.ABOUT } component={ About } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
@@ -28,10 +27,10 @@ export default (
             <Route exact path={ URL.CATALOG } component={ Catalog } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
             <Route exact path={ URL.CONTACT } component={ Contact } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
             <Route exact path={ URL.VIEW_ONE } component={ PrdInfo } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
+            <Route exact path={ URL.CATALOG_CATEGORY } component={ Catalog } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
 
             {/*<Route exact path={ URL.MOVIES } component={ MovieListPage } />*/}
             {/*<Route exact path={ URL.VIEW_ONE_MOVIE } component={ ViewOneMoviePage } />*/}
 
         </Switch>
-    </Router>
 );

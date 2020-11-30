@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useEffect} from "react";
+import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import Topbar from "./Components/topbar";
 import WrapHeader from "./Components/wrap_header";
@@ -9,48 +10,26 @@ import Banner2 from "./Components/banner2";
 import Blog from "./Components/blog";
 import Footer from "./Components/footer";
 import Shipping from "./Components/shipping";
+import {fetchData} from "./store/action_creatores";
+import Catalog from "./pages/catalog";
 
 function App_fur(props) {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchData())
+    },[])
   return (
     <div>
       <header className="header1">
         {/*!--Header desktop --*/}
         <div className="container-menu-header">
-
           <Topbar />
-            {props.children}
-          {/*<WrapHeader />*/}
-
+          <WrapHeader />
         </div>
-
       </header>
-
-      {/*/!*<!-- Slide1 -->*!/*/}
-
-      <Slide1 />
-
-      {/*<!-- Banner -->*/}
-
-      <Banner />
-
-      {/*<!-- New Product -->*/}
-
-      <NewProduct />
-
-      {/*<!-- Banner2 -->*/}
-
-      <Banner2 />
-
-      {/*<!-- Blog -->*/}
-
-      <Blog />
-
-      {/*<!-- Shipping -->*/}
-      <Shipping />
-
-      {/*<!-- Footer -->*/}
+        {props.children}
+        {/*<!-- Footer -->*/}
       <Footer />
-
     </div>
   );
 }

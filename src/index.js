@@ -9,18 +9,20 @@ import routes from "./router/routes";
 import configureStore from "./store/configure_store";
 import {Provider} from 'react-redux';
 import Catalog from "./pages/catalog";
+import {BrowserRouter} from "react-router-dom";
 
 const store = configureStore();
 
-
-
 ReactDOM.render(
+    <React.StrictMode>
   <Provider store={store}>
-      <Catalog/>
-    {/*<App_fur>*/}
-    {/*  {routes}*/}
-    {/*</App_fur>*/}
-  </Provider>,
+      <BrowserRouter>
+    <App_fur>
+      {routes}
+    </App_fur>
+      </BrowserRouter>
+  </Provider>
+    </React.StrictMode>,
   document.getElementById('root')
 );
 

@@ -2,9 +2,10 @@ export const ROOT = '/';
 export const CATALOG = '/catalog';
 export const CART = '/cart';
 export const BLOG = '/blog';
-export const VIEW_ONE = `{CATALOG}/:productID`;
+export const VIEW_ONE = `${CATALOG}/info`;
 export const ABOUT = '/about'
 export const CONTACT = '/contact'
+export const CATALOG_CATEGORY = `${CATALOG}/:categoryName`;
 
 export const NAV = [
     {

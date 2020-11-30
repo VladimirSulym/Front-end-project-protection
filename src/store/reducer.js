@@ -2,7 +2,7 @@ import {combineReducers} from "redux";
 import * as ACT from './action';
 
 const initialStore = {
-    movieList: [],
+    catalogList: [],
     isLoading: false,
     fetchStatus: null,
 };
@@ -13,7 +13,7 @@ function rootReducer(store = initialStore, action) {
         case ACT.UPDATE_LIST:
             return {
             ...store,
-                movieList: action.payload,
+                catalogList: action.payload,
             }
 
         case ACT.UPDATE_LOADING:
@@ -22,11 +22,6 @@ function rootReducer(store = initialStore, action) {
                 isLoading: action.payload,
             }
 
-        case ACT.UPDATE_SEARCH_TEXT:
-            return {
-            ...store,
-                searchText: action.payload,
-            }
         case ACT.FETCH_SUCCESS:
         case ACT.FETCH_FAILED:
             return {

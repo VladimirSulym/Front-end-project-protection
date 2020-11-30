@@ -1,4 +1,5 @@
 import React from "react";
+import slider_1 from './img/slider_1.jpg'
 
 function Slide1 () {
     return (
@@ -9,7 +10,7 @@ function Slide1 () {
             backgroundColor: '#f2f2f2',
             widht: '100%'
         }}>
-            <img src="./images/master-slide-02.jpg" alt="IMG-BENNER"/>
+            <img src={slider_1} alt="IMG-BENNER"/>
         </div>
     )
 }
