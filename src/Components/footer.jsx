@@ -1,4 +1,5 @@
 import React from "react";
+import dayjs from "dayjs";
 
 function Footer () {
     return (
@@ -6,14 +7,14 @@ function Footer () {
             <div className="flex-w p-b-90">
                 <div className="w-size6 p-t-30 p-l-15 p-r-15 respon3">
                     <h4 className="s-text12 p-b-30">
-                        GET IN TOUCH
+                        СВЯЗАТЬСЯ
                     </h4>
 
                     <div>
                         <p className="s-text7 w-size27">
-                            Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call
-                            us on (+1)
-                            96 716 6879
+                            Любые вопросы? Дайте нам знать в магазине на 8-м этаже,
+                            379 Hudson St, New York, NY 10018 или позвоните нам <br />по телефону
+                            (+1) 96716 6879
                         </p>
 
                         <div className="flex-m p-t-30">
@@ -28,7 +29,7 @@ function Footer () {
 
                 <div className="w-size7 p-t-30 p-l-15 p-r-15 respon4">
                     <h4 className="s-text12 p-b-30">
-                        Categories
+                        Категории
                     </h4>
 
                     <ul>
@@ -60,7 +61,7 @@ function Footer () {
 
                 <div className="w-size7 p-t-30 p-l-15 p-r-15 respon4">
                     <h4 className="s-text12 p-b-30">
-                        Links
+                        Ссылки
                     </h4>
 
                     <ul>
@@ -92,7 +93,7 @@ function Footer () {
 
                 <div className="w-size7 p-t-30 p-l-15 p-r-15 respon4">
                     <h4 className="s-text12 p-b-30">
-                        Help
+                        Помощь
                     </h4>
 
                     <ul>
@@ -124,7 +125,7 @@ function Footer () {
 
                 <div className="w-size8 p-t-30 p-l-15 p-r-15 respon3">
                     <h4 className="s-text12 p-b-30">
-                        Newsletter
+                        РАССЫЛКА
                     </h4>
 
                     <form>
@@ -140,35 +141,15 @@ function Footer () {
                                 Subscribe
                             </button>
                         </div>
-
                     </form>
                 </div>
             </div>
 
             <div className="t-center p-l-15 p-r-15">
-                <a href="#">
-                    <img className="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL"/>
-                </a>
-
-                <a href="#">
-                    <img className="h-size2" src="images/icons/visa.png" alt="IMG-VISA"/>
-                </a>
-
-                <a href="#">
-                    <img className="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD"/>
-                </a>
-
-                <a href="#">
-                    <img className="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS"/>
-                </a>
-
-                <a href="#">
-                    <img className="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER"/>
-                </a>
-
                 <div className="t-center s-text8 p-t-20">
-                    Copyright © 2018 All rights reserved. | This template is made with <i className="fa fa-heart-o"
-                                                                                          aria-hidden="true"/> by
+                    Copyright ©
+                    &nbsp;{dayjs().format('YYYY')}&nbsp;
+                    All rights reserved. | This template is made with <i className="fa fa-heart-o" aria-hidden="true"/> by
                     <a href="https://colorlib.com" target="_blank">Colorlib</a>
                 </div>
             </div>
