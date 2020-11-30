@@ -5,6 +5,10 @@ const initialStore = {
     catalogList: [],
     isLoading: false,
     fetchStatus: null,
+    categoryList: [],
+    colorList: [],
+    brandList: [],
+    priceRange: []
 };
 
 function rootReducer(store = initialStore, action) {
