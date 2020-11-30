@@ -8,6 +8,7 @@ import routes from "./router/routes";
 
 import configureStore from "./store/configure_store";
 import {Provider} from 'react-redux';
+import Catalog from "./pages/catalog";
 
 const store = configureStore();
 
@@ -15,9 +16,10 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App_fur>
-      {routes}
-    </App_fur>
+      <Catalog/>
+    {/*<App_fur>*/}
+    {/*  {routes}*/}
+    {/*</App_fur>*/}
   </Provider>,
   document.getElementById('root')
 );

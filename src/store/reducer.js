@@ -5,7 +5,6 @@ const initialStore = {
     movieList: [],
     isLoading: false,
     fetchStatus: null,
-    searchText: '',
 };
 
 function rootReducer(store = initialStore, action) {
