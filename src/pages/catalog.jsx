@@ -8,7 +8,7 @@ import BrandFilter from "../Components/catalog/filter/brand";
 import PriceFilter from "../Components/catalog/filter/price";
 import ColorFilter from "../Components/catalog/filter/color";
 import SearchProducts from "../Components/catalog/filter/search";
-import {fetchFilterData, filterColor} from "../store/action_creatores";
+import {fetchFilterData, filterBrand, filterColor} from "../store/action_creatores";
 import {CATALOG} from "../router/url";
 import {Link} from "react-router-dom";
 
@@ -21,7 +21,8 @@ function Catalog(props) {
     const categoryList = useSelector((store) => store.app.categoryList);
     const brandList = useSelector((store) => store.app.brandList);
     const colorList = useSelector((store) => store.app.colorList);
-    const filterColor = useSelector((store) => store.app.filter.color);
+    const filterColorID = useSelector((store) => store.app.filter.color);
+    const filterBrandID = useSelector((store) => store.app.filter.brand);
 
     // console.log('filterCategory -> ',filterCategory);
     // console.log('props ->', props);
@@ -45,8 +46,20 @@ function Catalog(props) {
         finalCatalog = finalCatalog.filter((item) => item.category === catID);
     }
 
-    if (filterColor) {
-        finalCatalog = finalCatalog.filter((item) => item.colors === filterColor);
+    if (filterColorID) {
+        finalCatalog = finalCatalog.filter((item) => item.colors === filterColorID);
+    }
+
+    if (filterBrandID) {
+        finalCatalog = finalCatalog.filter((item) => item.brand === filterBrandID);
+    }
+
+    function handleClickRessetColor (e) {
+        dispatch(filterColor(e.target.getAttribute('')))
+    }
+
+    function handleClickRessetBrand (e) {
+        dispatch(filterBrand(e.target.getAttribute('')))
     }
 
     return (
@@ -61,22 +74,24 @@ function Catalog(props) {
                 <div className="col-sm-6 col-md-4 col-lg-3 p-b-50">
                     <div className="leftbar p-r-20 p-r-0-sm">
                         {/* <!--  -->*/}
-                        <Link to={CATALOG}>
                         <h4 className="m-text14 p-b-7">
                             Категории
                         </h4>
-                        </Link>
                         <ul className="p-b-54">
                             {categoryList.map((item) => {
                                 return (<CategoryFilter
                             title = {item.title}
                             url = {item.url}
-                            key = {item.id}
+                            id = {item.id}
                             />
                             )})}
                             <li className="p-t-4">
                             <Link to={CATALOG}>
-                                ВСЕ
+                                <button
+                                    className="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4"
+                                >
+                                    все категории
+                                </button>
                             </Link>
                             </li>
                         </ul>
@@ -87,12 +102,23 @@ function Catalog(props) {
                         </h4>
 
                         <ul className="p-b-54">
-                            {brandList.map((item) => (<BrandFilter
+                            {brandList.map((item) => {
+                                console.log('item-->',item)
+                                return (<BrandFilter
                             title = {item.title}
-                            key = {item.id}
-                            />))}
-
+                            id = {item.id}
+                            />)}
+                            )}
+                            <li className="p-t-4">
+                                    <button
+                                        className="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4"
+                                        onClick={handleClickRessetBrand}
+                                    >
+                                        все категории
+                                    </button>
+                            </li>
                         </ul>
+
 
                         {/*<!--  -->*/}
 
@@ -113,6 +139,15 @@ function Catalog(props) {
                                     )
                                 }
                             </ul>
+                            <div className="w-size11">
+                                {/*<!-- Button -->*/}
+                                <button
+                                    className="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4"
+                                    onClick={handleClickRessetColor}
+                                >
+                                    resset
+                                </button>
+                            </div>
                         </div>
 
 

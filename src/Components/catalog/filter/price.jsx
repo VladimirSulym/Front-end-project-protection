@@ -14,7 +14,7 @@ function PriceFilter(props) {
                 <div className="w-size11">
                     {/*<!-- Button -->*/}
                     <button className="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
-                        Filter
+                        resset
                     </button>
                 </div>
 

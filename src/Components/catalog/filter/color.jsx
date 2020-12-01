@@ -1,12 +1,9 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {filterColor} from "../../../store/action_creatores";
 
 function ColorFilter(props) {
     const {id, color} = props;
-
-    const statColor = useSelector((store) => store.app.filter.color);
-    console.log('statColor 6666 ->',statColor);
 
     const dispatch = useDispatch();
 
