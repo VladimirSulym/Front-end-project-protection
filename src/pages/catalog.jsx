@@ -8,7 +8,7 @@ import BrandFilter from "../Components/catalog/filter/brand";
 import PriceFilter from "../Components/catalog/filter/price";
 import ColorFilter from "../Components/catalog/filter/color";
 import SearchProducts from "../Components/catalog/filter/search";
-import {fetchFilterData, filterBrand, filterColor} from "../store/action_creatores";
+import {fetchFilterData, filterBrand, filterColor, filterPrice} from "../store/action_creatores";
 import {CATALOG} from "../router/url";
 import {Link} from "react-router-dom";
 
@@ -23,10 +23,13 @@ function Catalog(props) {
     const colorList = useSelector((store) => store.app.colorList);
     const filterColorID = useSelector((store) => store.app.filter.color);
     const filterBrandID = useSelector((store) => store.app.filter.brand);
+    const priceRange = useSelector((store) => store.app.priceRange[0]);
+
+    const rangeData = useSelector((store) => store.app.filter.price);
 
     // console.log('filterCategory -> ',filterCategory);
     // console.log('props ->', props);
-
+    console.log(priceRange);
 
     function filterPrdCategory () {
         let cat = null;
@@ -37,8 +40,6 @@ function Catalog(props) {
         return (cat);
     }
     const catID = filterPrdCategory();
-
-    console.log('catID->',catID);
 
     let finalCatalog = catalogList;
 
@@ -60,6 +61,10 @@ function Catalog(props) {
 
     function handleClickRessetBrand (e) {
         dispatch(filterBrand(e.target.getAttribute('')))
+    }
+
+    function handleClickRessetPrice (e) {
+        dispatch(filterPrice([priceRange.priceMin, priceRange.priceMax]))
     }
 
     return (
@@ -103,7 +108,6 @@ function Catalog(props) {
 
                         <ul className="p-b-54">
                             {brandList.map((item) => {
-                                console.log('item-->',item)
                                 return (<BrandFilter
                             title = {item.title}
                             id = {item.id}
@@ -121,8 +125,31 @@ function Catalog(props) {
 
 
                         {/*<!--  -->*/}
+                        <div className="filter-price p-t-22 p-b-50 bo3">
 
-                        <PriceFilter/>
+                            <div className="m-text15 p-b-17">
+                                Цена
+                            </div>
+
+                            <PriceFilter
+                                priceRangeMin={123312313}/>
+
+                            <div className="flex-sb-m flex-w p-t-16">
+                                <div className="w-size11">
+                                    {/*<!-- Button -->*/}
+                                    <button
+                                        className="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4"
+                                        onClick={handleClickRessetPrice}
+                                    >
+                                        resset
+                                    </button>
+                                </div>
+
+                                <div className="s-text3 p-t-10 p-b-10">
+                                    Диапазон: $<span id="value-lower">{rangeData[0]}</span> - $<span id="value-upper">{rangeData[1]}</span>
+                                </div>
+                            </div>
+                        </div>
 
                         <div className="filter-color p-t-22 p-b-50 bo3">
                             <div className="m-text15 p-b-12">

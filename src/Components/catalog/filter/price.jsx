@@ -1,28 +1,31 @@
 import React from 'react';
+import {Range} from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import {useDispatch, useSelector} from "react-redux";
+import {filterPrice} from "../../../store/action_creatores";
 
 function PriceFilter(props) {
+
+    const {priceRangeMin} =props;
+    console.log(priceRangeMin);
+
+    const Slider = require('rc-slider');
+    const createSliderWithTooltip = Slider.createSliderWithTooltip;
+    const Range = createSliderWithTooltip(Slider.Range);
+
+    const dispatch = useDispatch();
+
+    function handleRangeMove (e) {
+        dispatch(filterPrice(e))
+    }
+
     return (
-        <div className="filter-price p-t-22 p-b-50 bo3">
-
-            <div className="m-text15 p-b-17">
-                Цена
-            </div>
-
-                <input type="range" className="custom-range" min="0" max="5" step="0.5" id="customRange3"/>
-
-            <div className="flex-sb-m flex-w p-t-16">
-                <div className="w-size11">
-                    {/*<!-- Button -->*/}
-                    <button className="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
-                        resset
-                    </button>
-                </div>
-
-                <div className="s-text3 p-t-10 p-b-10">
-                    Range: $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
-                </div>
-            </div>
-        </div>
+            <Range
+                min={21}
+                max={110}
+                defaultValue={[21,110]}
+                onChange={handleRangeMove}
+            />
     );
 }
 

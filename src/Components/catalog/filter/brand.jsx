@@ -4,8 +4,6 @@ import {filterBrand} from "../../../store/action_creatores";
 
 function BrandFilter(props) {
     const {title, id} = props;
-    console.log('props - >', props);
-
     const dispatch = useDispatch();
 
     function handleClickBrand (e) {
