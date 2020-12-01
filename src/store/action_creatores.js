@@ -46,6 +46,30 @@ export function updatePrice(payload) {
         payload,
     };
 }
+export function filterCategory(payload) {
+    return {
+        type: ACT.FILTER_CATEGORY,
+        payload,
+    };
+}
+export function filterBrand(payload) {
+    return {
+        type: ACT.FILTER_BRAND,
+        payload,
+    };
+}
+export function filterPrice(payload) {
+    return {
+        type: ACT.FILTER_PRICE,
+        payload,
+    };
+}
+export function filterColor(payload) {
+    return {
+        type: ACT.FILTER_COLOR,
+        payload,
+    };
+}
 
 export function fetchData () {
     return (dispatcher) => {
@@ -85,7 +109,6 @@ export function fetchFilterData () {
 
         allResponse.then(
             (responseArr) => {
-                console.log('responseArr->', responseArr)
                 return Promise.all([
                     responseArr[0].json(),
                     responseArr[1].json(),
@@ -95,7 +118,6 @@ export function fetchFilterData () {
             }
         ).then (
             (dataArr) => {
-                console.log('dataArr->', dataArr)
                 dispatcher(updateColor(dataArr[1].data));
                 dispatcher(updateCategory(dataArr[0].data));
                 dispatcher(updatePrice(dataArr[3].data));

@@ -6,5 +6,7 @@ export const UPDATE_COLOR = 'UPDATE_COLOR';
 export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 export const UPDATE_PRICE = 'UPDATE_PRICE';
 export const UPDATE_BRAND = 'UPDATE_BRAND';
-
-
+export const FILTER_CATEGORY = 'FILTER_CATEGORY';
+export const FILTER_BRAND = 'FILTER_BRAND';
+export const FILTER_PRICE = 'FILTER_PRICE';
+export const FILTER_COLOR = 'FILTER_COLOR';

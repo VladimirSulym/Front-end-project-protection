@@ -1934,14 +1934,19 @@ li.sale-noti > a {
     height:25px;
     cursor:pointer;
     border-radius: 50%;
+    box-shadow: 0 0 0px 2px #dedede;
+    -moz-box-shadow: 0 0 0px 2px #dedede;
+    -webkit-box-shadow: 0 0 0px 2px #dedede;
+    -o-box-shadow: 0 0 0px 2px #dedede;
+    -ms-box-shadow: 0 0 0px 2px #dedede;
 }
 
 .checkbox-color-filter:checked + .color-filter {
-  box-shadow: 0 0 0px 2px black;
-  -moz-box-shadow: 0 0 0px 2px black;
-  -webkit-box-shadow: 0 0 0px 2px black;
-  -o-box-shadow: 0 0 0px 2px black;
-  -ms-box-shadow: 0 0 0px 2px black;
+  box-shadow: 0 0 0px 2px #18dd44;
+  -moz-box-shadow: 0 0 0px 2px #18dd44;
+  -webkit-box-shadow: 0 0 0px 2px #18dd44;
+  -o-box-shadow: 0 0 0px 2px #18dd44;
+  -ms-box-shadow: 0 0 0px 2px #18dd44;
 }
 
 /*[ Pagination ]

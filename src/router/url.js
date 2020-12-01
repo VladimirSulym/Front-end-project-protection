@@ -18,7 +18,6 @@ export const NAV = [
         children: {
             title: 'Посмотреть товар',
             url: VIEW_ONE
-
         }
     },
     {

@@ -1,6 +1,6 @@
 import React from 'react';
+import {useEffect} from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import PropTypes from 'prop-types';
 import TitlePage from "../Components/catalog/title_page";
 import Element from "../Components/catalog/element";
 import CategoryFilter from "../Components/catalog/filter/category";
@@ -8,10 +8,51 @@ import BrandFilter from "../Components/catalog/filter/brand";
 import PriceFilter from "../Components/catalog/filter/price";
 import ColorFilter from "../Components/catalog/filter/color";
 import SearchProducts from "../Components/catalog/filter/search";
+import {fetchFilterData, filterColor} from "../store/action_creatores";
+import {CATALOG} from "../router/url";
+import {Link} from "react-router-dom";
 
 
-function Catalog() {
+function Catalog(props) {
+    const dispatch = useDispatch();
+    useEffect(() => {dispatch(fetchFilterData())},[])
+
     const catalogList = useSelector((store) => store.app.catalogList);
+    const categoryList = useSelector((store) => store.app.categoryList);
+    const brandList = useSelector((store) => store.app.brandList);
+    const colorList = useSelector((store) => store.app.colorList);
+    const filterColor = useSelector((store) => store.app.filter.color);
+
+    // console.log('filterCategory -> ',filterCategory);
+    // console.log('props ->', props);
+
+
+    function filterPrdCategory () {
+        let cat = null;
+        categoryList.forEach((item) => {
+            if (item.url === props.match.params.categoryName)
+            {cat=item.id}
+        });
+        return (cat);
+    }
+    const catID = filterPrdCategory();
+
+    console.log('catID->',catID);
+
+    let finalCatalog = catalogList;
+
+    console.log('finalCatalog111 ->',finalCatalog);
+
+    if (props.match.params.categoryName) {
+        finalCatalog = finalCatalog.filter((item) => item.category === catID);
+    }
+    console.log('filterColor - >',filterColor);
+
+    if (filterColor) {
+        finalCatalog = finalCatalog.filter((item) => item.colors === filterColor);
+    }
+
+    console.log('finalCatalog222 ->',finalCatalog);
 
     return (
         <>
@@ -25,24 +66,60 @@ function Catalog() {
                 <div className="col-sm-6 col-md-4 col-lg-3 p-b-50">
                     <div className="leftbar p-r-20 p-r-0-sm">
                         {/* <!--  -->*/}
+                        <Link to={CATALOG}>
+                        <h4 className="m-text14 p-b-7">
+                            Категории
+                        </h4>
+                        </Link>
+                        <ul className="p-b-54">
+                            {categoryList.map((item) => {
+                                return (<CategoryFilter
+                            title = {item.title}
+                            url = {item.url}
+                            key = {item.id}
+                            />
+                            )})}
+                            <li className="p-t-4">
+                            <Link to={CATALOG}>
+                                ВСЕ
+                            </Link>
+                            </li>
+                        </ul>
+
 
                         <h4 className="m-text14 p-b-7">
-                            Категория
+                            Бренды
                         </h4>
 
-                        <CategoryFilter/>
+                        <ul className="p-b-54">
+                            {brandList.map((item) => (<BrandFilter
+                            title = {item.title}
+                            key = {item.id}
+                            />))}
 
-                        <h4 className="m-text14 p-b-7">
-                            Бренд
-                        </h4>
-
-                        <BrandFilter />
+                        </ul>
 
                         {/*<!--  -->*/}
 
                         <PriceFilter/>
 
-                        <ColorFilter/>
+                        <div className="filter-color p-t-22 p-b-50 bo3">
+                            <div className="m-text15 p-b-12">
+                                Цвет
+                            </div>
+
+                            <ul className="flex-w">
+                                {
+                                    colorList.map((item) =>
+                                        <ColorFilter
+                                        id = {item.id}
+                                        color = {item.color}
+                                        />
+                                    )
+                                }
+                            </ul>
+                        </div>
+
 
                         <SearchProducts/>
 
@@ -84,13 +161,36 @@ function Catalog() {
                     {/*<!-- Product -->*/}
                     <div className="row">
 
-                        {catalogList.map((item) => (<Element
-                                title = {item.title}
-                                id = {item.id}
-                                price = {item.price}
-                                img_url = {item.img_url}
+                        {finalCatalog.map((item) =>
+                            <Element
+                            title = {item.title}
+                            id = {item.id}
+                            price = {item.price}
+                            img_url = {item.img_url}
                             />
-                            ))}
+                        )}
+
+                        {/*{catalogList.map((item) => {*/}
+                        {/*    if (item.category === catID) {*/}
+                        {/*    return (*/}
+                        {/*        <Element*/}
+                        {/*            title = {item.title}*/}
+                        {/*            id = {item.id}*/}
+                        {/*            price = {item.price}*/}
+                        {/*            img_url = {item.img_url}*/}
+                        {/*        />*/}
+                        {/*    )} else {*/}
+                        {/*        if (catID === null) {*/}
+                        {/*            return (*/}
+                        {/*                <Element*/}
+                        {/*                    title={item.title}*/}
+                        {/*                    id={item.id}*/}
+                        {/*                    price={item.price}*/}
+                        {/*                    img_url={item.img_url}*/}
+                        {/*                />)*/}
+                        {/*        }*/}
+                        {/*    }*/}
+                        {/*})}*/}
 
                     </div>
 

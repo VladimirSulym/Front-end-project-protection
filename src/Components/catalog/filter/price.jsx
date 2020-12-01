@@ -8,9 +8,7 @@ function PriceFilter(props) {
                 Цена
             </div>
 
-            <div className="wra-filter-bar">
-                <div id="filter-bar"></div>
-            </div>
+                <input type="range" className="custom-range" min="0" max="5" step="0.5" id="customRange3"/>
 
             <div className="flex-sb-m flex-w p-t-16">
                 <div className="w-size11">

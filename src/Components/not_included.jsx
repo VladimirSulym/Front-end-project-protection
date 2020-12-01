@@ -776,3 +776,57 @@ import React from "react";
         </div>
     </div>
 </div>
+
+<li className="m-r-10">
+    <input className="checkbox-color-filter"
+           id="color-filter2"
+           type="checkbox"
+           name="color-filter2"
+    />
+    <label className="color-filter color-filter2" htmlFor="color-filter2" />
+</li>
+
+<li className="m-r-10">
+    <input className="checkbox-color-filter"
+           id="color-filter3"
+           type="checkbox"
+           name="color-filter3"
+    />
+    <label className="color-filter color-filter3" htmlFor="color-filter3" />
+</li>
+
+<li className="m-r-10">
+    <input className="checkbox-color-filter"
+           id="color-filter4"
+           type="checkbox"
+           name="color-filter4"
+    />
+    <label className="color-filter color-filter4" htmlFor="color-filter4" />
+</li>
+
+<li className="m-r-10">
+    <input className="checkbox-color-filter"
+           id="color-filter5"
+           type="checkbox"
+           name="color-filter5"
+    />
+    <label className="color-filter color-filter5" htmlFor="color-filter5" />
+</li>
+
+<li className="m-r-10">
+    <input className="checkbox-color-filter"
+           id="color-filter6"
+           type="checkbox"
+           name="color-filter6"
+    />
+    <label className="color-filter color-filter6" htmlFor="color-filter6" />
+</li>
+
+<li className="m-r-10">
+    <input className="checkbox-color-filter"
+           id="color-filter7"
+           type="checkbox"
+           name="color-filter7"
+    />
+    <label className="color-filter color-filter7" htmlFor="color-filter7" />
+</li>
