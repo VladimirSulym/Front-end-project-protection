@@ -41,18 +41,13 @@ function Catalog(props) {
 
     let finalCatalog = catalogList;
 
-    console.log('finalCatalog111 ->',finalCatalog);
-
     if (props.match.params.categoryName) {
         finalCatalog = finalCatalog.filter((item) => item.category === catID);
     }
-    console.log('filterColor - >',filterColor);
 
     if (filterColor) {
         finalCatalog = finalCatalog.filter((item) => item.colors === filterColor);
     }
-
-    console.log('finalCatalog222 ->',finalCatalog);
 
     return (
         <>

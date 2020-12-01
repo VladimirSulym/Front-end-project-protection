@@ -12,7 +12,7 @@ const initialStore = {
     filter: {
         category:'',
         brand:'',
-        color: [],
+        color: '',
         price:[]
     }
 };
