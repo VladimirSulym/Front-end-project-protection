@@ -3,7 +3,7 @@ import slider_1 from './img/slider_1.jpg'
 import PropTypes from 'prop-types';
 
 
-function TitlePage () {
+function TitlePage (props) {
     return (
         <section
             className="bg-title-page p-t-50 p-b-40 flex-col-c-m"

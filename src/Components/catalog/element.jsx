@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {SERVER_IMAGES} from "../../utils/constants";
+import {CATALOG, VIEW_ONE} from "../../router/url";
+import {Link} from "react-router-dom";
 
 
 function Element(props) {
@@ -11,7 +12,10 @@ function Element(props) {
         img_url
     } = props;
     return (
-        <div className="col-sm-12 col-md-6 col-lg-4 p-b-50">
+        <div
+            className="col-sm-12 col-md-6 col-lg-4 p-b-50"
+            key={id}
+        >
             {/* <!-- Block2 -->*/}
             <div className="block2">
                 <div className="block2-img wrap-pic-w of-hidden pos-relative">
@@ -33,9 +37,9 @@ function Element(props) {
                 </div>
 
                 <div className="block2-txt p-t-20">
-                    <a href="product-detail.html" className="block2-name dis-block s-text3 p-b-5">
+                    <Link to={`${VIEW_ONE}/${id}`} className="block2-name dis-block s-text3 p-b-5">
                         {title}
-                    </a>
+                    </Link>
 
                     <span className="block2-price m-text6 p-r-5">
 										${price}

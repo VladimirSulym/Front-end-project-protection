@@ -1,5 +1,4 @@
 import React from 'react';
-import Catalog from "./catalog";
 import Slide1 from "../Components/slide1";
 import Banner from "../Components/banner";
 import NewProduct from "../Components/new_product";

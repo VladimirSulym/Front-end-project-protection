@@ -15,9 +15,8 @@ import Catalog from "./pages/catalog";
 
 function App_fur(props) {
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchData())
-    },[])
+    useEffect(() => {dispatch(fetchData())},[])
+
   return (
     <div>
       <header className="header1">

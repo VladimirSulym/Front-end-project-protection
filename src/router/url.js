@@ -3,9 +3,10 @@ export const CATALOG = '/catalog';
 export const CART = '/cart';
 export const BLOG = '/blog';
 export const VIEW_ONE = `${CATALOG}/info`;
-export const ABOUT = '/about'
-export const CONTACT = '/contact'
+export const ABOUT = '/about';
+export const CONTACT = '/contact';
 export const CATALOG_CATEGORY = `${CATALOG}/:categoryName`;
+export const PRD_INFO = `${VIEW_ONE}/:id`;
 
 export const NAV = [
     {
@@ -15,10 +16,10 @@ export const NAV = [
     {
         title: 'Каталог',
         url: CATALOG,
-        children: {
-            title: 'Посмотреть товар',
-            url: VIEW_ONE
-        }
+        // children: {
+        //     title: 'Посмотреть товар',
+        //     url: VIEW_ONE
+        // }
     },
     {
         title: 'Корзина',

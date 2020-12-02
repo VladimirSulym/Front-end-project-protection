@@ -27,6 +27,7 @@ export default (
             <Route exact path={ URL.CATALOG } component={ Catalog } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
             <Route exact path={ URL.CONTACT } component={ Contact } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
             <Route exact path={ URL.VIEW_ONE } component={ PrdInfo } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
+            <Route exact path={ URL.PRD_INFO } component={ PrdInfo } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
             <Route exact path={ URL.CATALOG_CATEGORY } component={ Catalog } /> {/* Маршруты - конкретные URL для которых отображаются конкретные компоненты */}
 
             {/*<Route exact path={ URL.MOVIES } component={ MovieListPage } />*/}
