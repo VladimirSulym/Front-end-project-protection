@@ -1,20 +1,21 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import {SERVER_IMAGES} from "../utils/constants";
-import ColorFilter from "../Components/catalog/filter/color";
 import ColorPrdInfo from "../Components/catalog/color_prd_info";
 import {Link} from "react-router-dom";
-import {ROOT} from "../router/url";
+import {CATALOG, ROOT} from "../router/url";
 
 function PrdInfo(props) {
 
     const catalogList = useSelector((store) => store.app.catalogList);
     const categoryList = useSelector((store) => store.app.categoryList);
+    const brandList = useSelector((store) => store.app.brandList);
 
-    let finalElement = catalogList.filter((item) => item.id === props.match.params.id);
-    finalElement = finalElement[0];
+    const finalElement = catalogList.filter((item) => item.id === props.match.params.id);
+    const category = categoryList.filter((item) => item.id === finalElement[0].category);
+    const brand = brandList.filter((item) => item.id === finalElement[0].brand);
 
-    console.log('finalElement ->', finalElement);
+    console.log('brandList ->', brandList);
     return (
         <>
         {/*<!-- breadcrumb -->*/}
@@ -24,18 +25,18 @@ function PrdInfo(props) {
                 <i className="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"/>
             </Link>
 
-            <a href="product.html" className="s-text16">
+            <Link to={CATALOG} className="s-text16">
                 Каталог
                 <i className="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"/>
-            </a>
+            </Link>
 
-            <a href="#" className="s-text16">
-
+            <Link to={`${CATALOG}/${category[0].url}`} className="s-text16">
+                {category[0].title}
                 <i className="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"/>
-            </a>
+            </Link>
 
-            <span className="s-text17">
-			Boxy T-Shirt with Roll Sleeve Detail
+            <span className="s-text17" style={{textTransform: "capitalize"}}>
+                {brand[0].title}
 		</span>
         </div>
 
@@ -49,7 +50,7 @@ function PrdInfo(props) {
                     <div className="slick3">
                         <div className="item-slick3" data-thumb="images/thumb-item-01.jpg">
                             <div className="wrap-pic-w">
-                                <img src={`${SERVER_IMAGES}${finalElement.img_url}`} alt={finalElement.title}/>
+                                <img src={`${SERVER_IMAGES}${finalElement[0].img_url}`} alt={finalElement[0].title}/>
                             </div>
                         </div>
 
@@ -59,15 +60,18 @@ function PrdInfo(props) {
 
             <div className="w-size14 p-t-30 respon5">
                 <h4 className="product-detail-name m-text16 p-b-13">
-                    {finalElement.title}
+                    {finalElement[0].title}
                 </h4>
 
                 <span className="m-text17">
-					${finalElement.price}
+					${finalElement[0].price}
 				</span>
 
                 <p className="s-text8 p-t-10">
-                    {finalElement.desc ? finalElement.desc : `Описание отсутствует` }
+                    {finalElement[0].desc ? finalElement[0].desc : `Описание отсутствует` }<br/>
+                    <div style={{textTransform: "uppercase"}}>
+                    Производитель: {brand[0].title}
+                    </div>
                 </p>
 
                 {/* <!--  -->*/}
@@ -82,7 +86,7 @@ function PrdInfo(props) {
                         <div className="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
 
                             <ColorPrdInfo
-                            colorData={finalElement.colors}
+                            colorData={finalElement[0].colors}
                             />
                         </div>
                     </div>
@@ -113,8 +117,8 @@ function PrdInfo(props) {
                 </div>
 
                 <div className="p-b-45">
-                    <span className="s-text8 m-r-35">SKU: MUG-01</span>
-                    <span className="s-text8">Categories: Mug, Design</span>
+                    <span className="s-text8 m-r-35">ID продукта: {finalElement[0].id}</span>
+                    <span className="s-text8">Категория: {category[0].title}</span>
                 </div>
 
                 {/*<!--  -->*/}

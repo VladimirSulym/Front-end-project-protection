@@ -14,6 +14,9 @@ const initialStore = {
         brand:'',
         color: '',
         price:'',
+    },
+    cart: {
+
     }
 };
 

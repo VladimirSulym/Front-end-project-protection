@@ -10,12 +10,13 @@ import Banner2 from "./Components/banner2";
 import Blog from "./Components/blog";
 import Footer from "./Components/footer";
 import Shipping from "./Components/shipping";
-import {fetchData} from "./store/action_creatores";
+import {fetchData, fetchFilterData} from "./store/action_creatores";
 import Catalog from "./pages/catalog";
 
 function App_fur(props) {
     const dispatch = useDispatch();
     useEffect(() => {dispatch(fetchData())},[])
+    useEffect(() => {dispatch(fetchFilterData())},[])
 
   return (
     <div>
