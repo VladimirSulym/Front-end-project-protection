@@ -29,7 +29,7 @@ function Catalog(props) {
 
     // console.log('filterCategory -> ',filterCategory);
     // console.log('props ->', props);
-    console.log(priceRange);
+    // console.log("rangeData --",rangeData);
 
     function filterPrdCategory () {
         let cat = null;
@@ -55,6 +55,10 @@ function Catalog(props) {
         finalCatalog = finalCatalog.filter((item) => item.brand === filterBrandID);
     }
 
+    if (rangeData) {
+        finalCatalog = finalCatalog.filter((item) => (item.price >= rangeData[0] && item.price <= rangeData[1]));
+    }
+
     function handleClickRessetColor (e) {
         dispatch(filterColor(e.target.getAttribute('')))
     }
@@ -63,8 +67,8 @@ function Catalog(props) {
         dispatch(filterBrand(e.target.getAttribute('')))
     }
 
-    function handleClickRessetPrice (e) {
-        dispatch(filterPrice([priceRange.priceMin, priceRange.priceMax]))
+    function handleClickRessetPrice () {
+        dispatch(filterPrice([+priceRange.priceMin, +priceRange.priceMax]))
     }
 
     return (
@@ -131,8 +135,7 @@ function Catalog(props) {
                                 Цена
                             </div>
 
-                            <PriceFilter
-                                priceRangeMin={123312313}/>
+                            <PriceFilter />
 
                             <div className="flex-sb-m flex-w p-t-16">
                                 <div className="w-size11">

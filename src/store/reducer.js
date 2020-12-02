@@ -13,7 +13,7 @@ const initialStore = {
         category:'',
         brand:'',
         color: '',
-        price:[]
+        price:'',
     }
 };
 
