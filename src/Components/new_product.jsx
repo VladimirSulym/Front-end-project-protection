@@ -6,7 +6,7 @@ function NewProduct () {
             <div className="container">
                 <div className="sec-title p-b-60">
                     <h3 className="m-text5 t-center">
-                        Мы рекомендуемые
+                        Мы рекомендуем
                     </h3>
                 </div>
 

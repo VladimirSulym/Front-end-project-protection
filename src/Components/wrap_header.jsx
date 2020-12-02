@@ -2,6 +2,7 @@ import React from "react";
 import {NAV} from "../router/url";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 function WrapHeader (props) {
 
@@ -15,6 +16,8 @@ function WrapHeader (props) {
         )
 
     }
+
+    const quanCart = (useSelector((store) => store.app.cart)).length;
 
     return (
         <div className="wrap_header">
@@ -45,7 +48,7 @@ function WrapHeader (props) {
                 <div className="header-wrapicon2">
                     <img src="./images/icons/icon-header-02.png" className="header-icon1 js-show-header-dropdown"
                          alt="ICON"/>
-                    <span className="header-icons-noti">0</span>
+                    <span className="header-icons-noti">{quanCart}</span>
 
                     {/*<!-- Header cart noti -->*/}
                     <div className="header-cart header-dropdown">

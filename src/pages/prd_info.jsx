@@ -1,21 +1,65 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {SERVER_IMAGES} from "../utils/constants";
 import ColorPrdInfo from "../Components/catalog/color_prd_info";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {CATALOG, ROOT} from "../router/url";
+import {updateCart, updateCount} from "../store/action_creatores";
 
 function PrdInfo(props) {
+    const dispatch = useDispatch();
 
     const catalogList = useSelector((store) => store.app.catalogList);
     const categoryList = useSelector((store) => store.app.categoryList);
     const brandList = useSelector((store) => store.app.brandList);
 
+    let cart = useSelector((store) => store.app.cart);
+    console.log('cart 1111- >', cart)
+
     const finalElement = catalogList.filter((item) => item.id === props.match.params.id);
     const category = categoryList.filter((item) => item.id === finalElement[0].category);
     const brand = brandList.filter((item) => item.id === finalElement[0].brand);
 
-    console.log('brandList ->', brandList);
+    let quant = useSelector((store) => store.app.count);
+
+    function handleClicBattonPlus() {
+        quant++;
+        dispatch(updateCount(quant))
+    }
+    function handleClicBattonMinus() {
+        quant--;
+        dispatch(updateCount(quant))
+    }
+
+    function handleAddCart() {
+        const newPos = {
+            id: finalElement[0].id,
+            quant,
+            price: finalElement[0].price,
+            total: quant*finalElement[0].price,
+        };
+
+        if ((cart.filter((item) => item.id === newPos.id)).length !== 0){
+        cart.map((item) => {
+           if (item.id === newPos.id) {
+               item.quant = item.quant+newPos.quant;
+               item.total = item.price*item.quant;
+           }
+        });} else cart.push(newPos);
+        dispatch(updateCart(cart));
+        console.log('newPos - >', newPos);
+        console.log('cart222 - >', cart);
+    }
+
+    useEffect(()=>{dispatch(updateCount(0))
+        return (()=>{dispatch(updateCount(0))})
+    },[]);
+
+    useEffect(()=>{dispatch(updateCart(cart))
+        return (()=>{dispatch(updateCart(cart))})
+    },[]);
+
     return (
         <>
         {/*<!-- breadcrumb -->*/}
@@ -94,22 +138,31 @@ function PrdInfo(props) {
                     <div className="flex-r-m flex-w p-t-10">
                         <div className="w-size16 flex-m flex-w">
                             <div className="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
-                                <button className="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+                                <button
+                                    className="btn-num-product-down color1 flex-c-m size7 bg8 eff2"
+                                    onClick={handleClicBattonMinus}
+                                >
                                     <i className="fs-12 fa fa-minus" aria-hidden="true"/>
                                 </button>
 
                                 <input className="size8 m-text18 t-center num-product" type="number" name="num-product"
-                                       value="1"/>
+                                       value={quant}/>
 
-                                    <button className="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+                                    <button
+                                        className="btn-num-product-up color1 flex-c-m size7 bg8 eff2"
+                                        onClick={handleClicBattonPlus}
+                                    >
                                         <i className="fs-12 fa fa-plus" aria-hidden="true"/>
                                     </button>
                             </div>
 
                             <div className="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
                                 {/*<!-- Button -->*/}
-                                <button className="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                    Add to Cart
+                                <button
+                                    className="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"
+                                    onClick={handleAddCart}
+                                >
+                                    в корзину
                                 </button>
                             </div>
                         </div>
@@ -173,4 +226,4 @@ function PrdInfo(props) {
     );
 }
 
-export default React.memo(PrdInfo);
+export default withRouter(React.memo(PrdInfo));

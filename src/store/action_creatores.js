@@ -70,6 +70,18 @@ export function filterColor(payload) {
         payload,
     };
 }
+export function updateCount(payload) {
+    return {
+        type: ACT.RESET_COUNT,
+        payload,
+    };
+}
+export function updateCart(payload) {
+    return {
+        type: ACT.UPDATE_CART,
+        payload,
+    };
+}
 
 export function fetchData () {
     return (dispatcher) => {

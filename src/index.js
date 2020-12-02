@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import App_fur from './App_fur'
 import routes from "./router/routes";
 
 import configureStore from "./store/configure_store";
 import {Provider} from 'react-redux';
-import Catalog from "./pages/catalog";
 import {BrowserRouter} from "react-router-dom";
 
 const store = configureStore();

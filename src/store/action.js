@@ -10,3 +10,6 @@ export const FILTER_CATEGORY = 'FILTER_CATEGORY';
 export const FILTER_BRAND = 'FILTER_BRAND';
 export const FILTER_PRICE = 'FILTER_PRICE';
 export const FILTER_COLOR = 'FILTER_COLOR';
+export const RESET_COUNT = 'RESET_COUNT';
+export const UPDATE_CART = 'UPDATE_CART';
+

@@ -9,20 +9,31 @@ const initialStore = {
     colorList: [],
     brandList: [],
     priceRange: [],
+    count: 0,
     filter: {
         category:'',
         brand:'',
         color: '',
         price:'',
     },
-    cart: {
-
-    }
+    cart: []
 };
 
 function rootReducer(store = initialStore, action) {
 
     switch (action.type) {
+        case ACT.UPDATE_CART:
+            return {
+            ...store,
+                cart: action.payload,
+            }
+
+        case ACT.RESET_COUNT:
+            return {
+            ...store,
+                count: action.payload,
+            }
+
         case ACT.UPDATE_LIST:
             return {
             ...store,
