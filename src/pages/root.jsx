@@ -7,6 +7,7 @@ import Blog from "../Components/blog";
 import Shipping from "../Components/shipping";
 
 function Root(props) {
+
     return (
         <>
         {/*<!-- Slide1 -->*/}
