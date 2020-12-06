@@ -9,8 +9,6 @@ function Banner () {
     const isLoading = useSelector((store) => store.app.isLoading);
     const catalogList = useSelector((store) => store.app.catalogList);
     const categoryList = useSelector((store) => store.app.categoryList);
-    console.log('catalogList => ', catalogList);
-    console.log('categoryList => ', categoryList);
     const fetchStatus = useSelector((store) => store.app.fetchStatus);
 
 
@@ -23,39 +21,26 @@ function Banner () {
     if (categoryList.length !== 0 && catalogList.length !== 0) {
         let banerDataTemp = [];
         for (let i=0; categoryList.length > i; i++){
-            console.log("categoryList.length = >", categoryList.length);
-            console.log("categoryList = >", categoryList[i]);
             banerDataTemp = catalogList.filter((item) => item.category === categoryList[i].id);
-            console.log("banerDataTemp = >", banerDataTemp);
             const randomtemp = getRandomInteger(0,banerDataTemp.length-1);
-            console.log("randomtemp = >", randomtemp);
             banerData = banerData.concat(banerDataTemp[randomtemp]);
-            console.log("banerData IN = >", banerData);
         }
     }
 
-    console.log("banerData = >", banerData);
-
     banerData = banerData.map((item)=>{
         let temp =[];
-        console.log("item START ->",item);
         [temp] = categoryList.filter((item1) => item1.id === item.category);
-        console.log("temp ->",temp);
         item = {
             ...item,
             categoryTitle: temp.title,
             categoryUrl: temp.url
         };
-        console.log("item FINISH ->",item);
         return(item)
     });
-
-    console.log("banerData = >", banerData);
 
     const random = getRandomInteger();
 
     if (!(catalogList.length !== 0 && categoryList.length !== 0)) {
-        console.log("ПРОШЕЛ ТРУЕ")
         return (
         <section className="banner bgwhite p-t-40 p-b-40">
             <div className="container">
@@ -218,7 +203,7 @@ function Banner () {
             </div>
         </section>
     )
-    } else { console.log("ПРОШЕЛ FALSE")
+    } else {
         return (
         <section className="banner bgwhite p-t-40 p-b-40">
             <div className="container">

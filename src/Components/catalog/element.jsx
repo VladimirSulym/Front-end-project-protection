@@ -2,15 +2,40 @@ import React from 'react';
 import {SERVER_IMAGES} from "../../utils/constants";
 import {CATALOG, VIEW_ONE} from "../../router/url";
 import {Link} from "react-router-dom";
+import {updateCart} from "../../store/action_creatores";
+import {useDispatch, useSelector} from "react-redux";
 
 
 function Element(props) {
+    const dispatch = useDispatch();
+    let cart = useSelector((store) => store.app.cart);
     const {
         id,
         title,
         price,
         img_url
     } = props;
+
+    function handleAddCart() {
+        const newPos = {
+            id: id,
+            quant: 1,
+            price: price,
+            total: price
+        };
+
+        if ((cart.filter((item) => item.id === newPos.id)).length !== 0){
+            cart.map((item) => {
+                if (item.id === newPos.id) {
+                    item.quant = item.quant+newPos.quant;
+                    item.total = item.price*item.quant;
+                }
+            });} else cart.push(newPos);
+        dispatch(updateCart(cart));
+        console.log('newPos - >', newPos);
+        console.log('cart222 - >', cart);
+    }
+
     return (
         <div
             className="col-sm-12 col-md-6 col-lg-4 p-b-50"
@@ -29,7 +54,10 @@ function Element(props) {
 
                         <div className="block2-btn-addcart w-size1 trans-0-4">
                             {/*<!-- Button -->*/}
-                            <button className="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                            <button
+                                className="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4"
+                                onClick={handleAddCart}
+                            >
                                 В корзину
                             </button>
                         </div>
