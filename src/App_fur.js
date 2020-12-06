@@ -24,7 +24,7 @@ function App_fur(props) {
         {/*!--Header desktop --*/}
         <div className="container-menu-header">
           <Topbar />
-          <WrapHeader />
+          <WrapHeader/>
         </div>
       </header>
         {props.children}

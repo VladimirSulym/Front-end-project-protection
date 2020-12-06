@@ -16,7 +16,7 @@ const initialStore = {
         color: '',
         price:'',
     },
-    cart: []
+    cart: [],
 };
 
 function rootReducer(store = initialStore, action) {

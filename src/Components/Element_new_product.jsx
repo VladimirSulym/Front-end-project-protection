@@ -21,8 +21,6 @@ function ElementNewProduct(props) {
 
     if (catalogList.length !== 0) {
         const randomtemp = getRandomInteger(0,catalogList.length-1);
-        console.log("catalogList = >", catalogList);
-        console.log("randomtemp = >", randomtemp);
         elementData = catalogList[randomtemp];
         }
 
@@ -42,8 +40,6 @@ function ElementNewProduct(props) {
                 }
             });} else cart.push(newPos);
         dispatch(updateCart(cart));
-        console.log('newPos - >', newPos);
-        console.log('cart222 - >', cart);
     }
 
     if (Object.keys(elementData).length === 0) {
@@ -116,7 +112,7 @@ function ElementNewProduct(props) {
                                 className="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4"
                                 onClick={handleAddCart}
                             >
-                                В карзину
+                                В корзину
                             </button>
                         </div>
                     </div>

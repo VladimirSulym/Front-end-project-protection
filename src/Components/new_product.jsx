@@ -1,6 +1,4 @@
 import React from "react";
-import {useSelector} from "react-redux";
-import Spinner from "react-bootstrap/Spinner";
 import ElementNewProduct from "./Element_new_product";
 
 function NewProduct () {

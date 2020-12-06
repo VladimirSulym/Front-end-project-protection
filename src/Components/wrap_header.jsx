@@ -1,10 +1,11 @@
 import React from "react";
-import {NAV} from "../router/url";
+import {NAV, ROOT} from "../router/url";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 function WrapHeader (props) {
+    const quanCart = (useSelector((store) => store.app.cart)).length;
 
     function renderNavItem (item) {
         return (
@@ -17,14 +18,12 @@ function WrapHeader (props) {
 
     }
 
-    const quanCart = (useSelector((store) => store.app.cart)).length;
-
     return (
         <div className="wrap_header">
             {/*<!-- Logo -->*/}
-            <a href="index.html" className="logo">
+            <Link to={ROOT} className="logo">
                 <img src="images/icons/logo.png" alt="IMG-LOGO"/>
-            </a>
+            </Link>
 
             {/*<!-- Menu -->*/}
             <div className="wrap_menu">
