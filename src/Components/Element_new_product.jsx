@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from "react-bootstrap/Spinner";
 import {useDispatch, useSelector} from "react-redux";
 import {SERVER_IMAGES} from "../utils/constants";
-import {updateCart} from "../store/action_creatores";
+import {updateCart, updateQuanCart} from "../store/action_creatores";
 import {Link} from "react-router-dom";
 import {VIEW_ONE} from "../router/url";
 
@@ -40,6 +40,7 @@ function ElementNewProduct(props) {
                 }
             });} else cart.push(newPos);
         dispatch(updateCart(cart));
+        dispatch(updateQuanCart(cart.length));
     }
 
     if (Object.keys(elementData).length === 0) {

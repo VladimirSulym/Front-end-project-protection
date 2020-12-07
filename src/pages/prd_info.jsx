@@ -5,7 +5,7 @@ import {SERVER_IMAGES} from "../utils/constants";
 import ColorPrdInfo from "../Components/catalog/color_prd_info";
 import {Link, withRouter} from "react-router-dom";
 import {CATALOG, ROOT} from "../router/url";
-import {updateCart, updateCount} from "../store/action_creatores";
+import {updateCart, updateCount, updateQuanCart} from "../store/action_creatores";
 
 function PrdInfo(props) {
     const dispatch = useDispatch();
@@ -48,6 +48,7 @@ function PrdInfo(props) {
            }
         });} else cart.push(newPos);
         dispatch(updateCart(cart));
+        dispatch(updateQuanCart(cart.length));
         console.log('newPos - >', newPos);
         console.log('cart222 - >', cart);
     }

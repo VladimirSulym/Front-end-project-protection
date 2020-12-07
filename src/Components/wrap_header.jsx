@@ -5,7 +5,9 @@ import {withRouter} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 function WrapHeader (props) {
-    const quanCart = (useSelector((store) => store.app.cart)).length;
+    // const quanCart = (useSelector((store) => store.app.cart)).length;
+    // const quan = useSelector((store) => store.app.count);
+    const quanCart = useSelector((store) => store.app.quan);
 
     function renderNavItem (item) {
         return (

@@ -12,4 +12,5 @@ export const FILTER_PRICE = 'FILTER_PRICE';
 export const FILTER_COLOR = 'FILTER_COLOR';
 export const RESET_COUNT = 'RESET_COUNT';
 export const UPDATE_CART = 'UPDATE_CART';
+export const UPDATE_QUANCART = 'UPDATE_QUANCART';
 

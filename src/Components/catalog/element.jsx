@@ -2,7 +2,7 @@ import React from 'react';
 import {SERVER_IMAGES} from "../../utils/constants";
 import {CATALOG, VIEW_ONE} from "../../router/url";
 import {Link} from "react-router-dom";
-import {updateCart} from "../../store/action_creatores";
+import {updateCart, updateQuanCart} from "../../store/action_creatores";
 import {useDispatch, useSelector} from "react-redux";
 
 
@@ -32,6 +32,7 @@ function Element(props) {
                 }
             });} else cart.push(newPos);
         dispatch(updateCart(cart));
+        dispatch(updateQuanCart(cart.length));
         console.log('newPos - >', newPos);
         console.log('cart222 - >', cart);
     }

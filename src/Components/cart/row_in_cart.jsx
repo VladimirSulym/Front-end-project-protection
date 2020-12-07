@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {SERVER_IMAGES} from "../../utils/constants";
 import {useDispatch, useSelector} from "react-redux";
-import {updateCart, updateCount} from "../../store/action_creatores";
+import {updateCart, updateCount, updateQuanCart} from "../../store/action_creatores";
 
 function RowInCart(props) {
     const dispatch = useDispatch();
@@ -29,6 +29,7 @@ function RowInCart(props) {
                 }
             });} else cart.push(newPos);
         dispatch(updateCart(cart));
+        dispatch(updateQuanCart(cart.length));
         console.log('newPos - >', newPos);
         console.log('cart222 - >', cart);
     }

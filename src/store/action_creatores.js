@@ -82,6 +82,12 @@ export function updateCart(payload) {
         payload,
     };
 }
+export function updateQuanCart(payload) {
+    return {
+        type: ACT.UPDATE_QUANCART,
+        payload,
+    };
+}
 
 export function fetchData () {
     return (dispatcher) => {
