@@ -8,7 +8,7 @@ import BrandFilter from "../Components/catalog/filter/brand";
 import PriceFilter from "../Components/catalog/filter/price";
 import ColorFilter from "../Components/catalog/filter/color";
 import SearchProducts from "../Components/catalog/filter/search";
-import {fetchFilterData, filterBrand, filterColor, filterPrice} from "../store/action_creatores";
+import {fetchFilterData, filterBrand, filterColor, filterPrice, updatePrice} from "../store/action_creatores";
 import {CATALOG} from "../router/url";
 import {Link} from "react-router-dom";
 
@@ -24,6 +24,7 @@ function Catalog(props) {
     const filterColorID = useSelector((store) => store.app.filter.color);
     const filterBrandID = useSelector((store) => store.app.filter.brand);
     const priceRange = useSelector((store) => store.app.priceRange[0]);
+    console.log("priceRange 1111 --->>",priceRange)
 
     const rangeData = useSelector((store) => store.app.filter.price);
 
@@ -57,6 +58,14 @@ function Catalog(props) {
 
     if (rangeData) {
         finalCatalog = finalCatalog.filter((item) => (item.price >= rangeData[0] && item.price <= rangeData[1]));
+    }
+    let priceMin = 0;
+    let priceMax = 1000;
+
+    if (priceRange){
+        priceMin = +priceRange.priceMin;
+        priceMax = +priceRange.priceMax
+        console.log("OBNOVILLL")
     }
 
     function handleClickRessetColor (e) {
@@ -134,9 +143,10 @@ function Catalog(props) {
                             <div className="m-text15 p-b-17">
                                 Цена
                             </div>
-
-                            <PriceFilter />
-
+                                <PriceFilter
+                                priceMin = {+priceMin}
+                                priceMax = {+priceMax}
+                                />
                             <div className="flex-sb-m flex-w p-t-16">
                                 <div className="w-size11">
                                     {/*<!-- Button -->*/}

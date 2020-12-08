@@ -336,7 +336,7 @@ function Banner () {
 
                             <div className="block2-content sizefull ab-t-l flex-col-c-m">
                                 <h4 className="m-text4 t-center w-size3 p-b-8">
-                                    Подпишитесь <br />скидку 20%
+                                    Подпишитесь <br />скидка 20%
                                 </h4>
 
                                 <p className="t-center w-size4">
