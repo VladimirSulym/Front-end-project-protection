@@ -14,10 +14,10 @@ import {
     filterColor,
     filterPrice,
     sortPrice,
-    updatePrice
 } from "../store/action_creatores";
 import {CATALOG} from "../router/url";
 import {Link} from "react-router-dom";
+import PaginationPage from "../Components/catalog/paginationPage";
 
 
 function Catalog(props) {
@@ -98,6 +98,21 @@ function Catalog(props) {
         } else if (sortPriceDate === "max2min"){
             finalCatalog.sort((a, b) => b.price - a.price)
             } else finalCatalog.sort((a, b) => a.id - b.id)
+
+    function builPaginationData () {
+        let res = [];
+        const index = finalCatalog.length / 12;
+        console.log('index =>',index);
+        for (let i=0; i<index; i++){
+            res.push(i+1);
+        }
+        return res;
+    }
+
+    const paginationData = builPaginationData();
+
+    console.log('paginationData =>',paginationData);
+
 
     return (
         <>
@@ -210,7 +225,7 @@ function Catalog(props) {
                         </div>
 
 
-                        <SearchProducts/>
+                        {/*<SearchProducts/>*/}
 
 
                     </div>
@@ -230,7 +245,7 @@ function Catalog(props) {
                         </div>
 
                         <span className="s-text8 p-t-5 p-b-5">
-							Showing 1–12 of 16 results
+							Отражаются 1–12 из {finalCatalog.length} результатов
 						</span>
                     </div>
 
@@ -249,10 +264,19 @@ function Catalog(props) {
                     </div>
 
                     {/* <!-- Pagination -->*/}
+
                     <div className="pagination flex-m flex-w p-t-26">
-                        <a href="#" className="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-                        <a href="#" className="item-pagination flex-c-m trans-0-4">2</a>
+
+                        {
+                            paginationData.map((item) =>
+                                <PaginationPage
+                                number_page = {item}
+                                />
+                            )
+                        }
+
                     </div>
+
                 </div>
             </div>
         </div>
