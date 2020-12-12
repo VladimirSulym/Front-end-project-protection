@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {SERVER_IMAGES} from "../../utils/constants";
 import {useDispatch, useSelector} from "react-redux";
 import {updateCart, updateCount, updateQuanCart} from "../../store/action_creatores";
+import Badge from 'react-bootstrap/Badge'
 
 function RowInCart(props) {
     const dispatch = useDispatch();
@@ -9,7 +10,8 @@ function RowInCart(props) {
     let cart = useSelector((store) => store.app.cart);
     console.log('cart 1111- >', cart)
 
-    let quantInt = useSelector((store) => store.app.count);
+    let quantInt = quant;
+    // let quantInt = useSelector((store) => store.app.count);
     console.log('quantInt 222222222 - >', quantInt)
 
 
@@ -40,18 +42,33 @@ function RowInCart(props) {
         handleAddCart(1)
     }
     function handleClicBattonMinus() {
-        quantInt--
+        if (quantInt > 0) {
+            quantInt--;
+            handleAddCart(-1)
+        } else {quantInt=0}
         dispatch(updateCount(quantInt));
-        handleAddCart(-1)
+    }
+
+    function handleClicBattonDel() {
+        console.log("DEL!!!!!!!!!!!")
+        cart = cart.filter((item) => {
+            console.log("item.id = >", item.id);
+            console.log("id = >", id);
+            console.log("item.id !== id = >", item.id !== id);
+            return(item.id !== id);
+        });
+        console.log('cartDEL - >', cart);
+        dispatch(updateCart(cart));
+        dispatch(updateQuanCart(cart.length));
     }
 
     useEffect(()=>{dispatch(updateCount(0))
         return (()=>{dispatch(updateCount(0))})
     },[]);
 
-    useEffect(()=>{dispatch(updateCart(cart))
-        return (()=>{dispatch(updateCart(cart))})
-    },[]);
+    // useEffect(()=>{dispatch(updateCart(cart))
+    //     return (()=>{dispatch(updateCart(cart))})
+    // },[]);
 
     return (
         <tr className="table-row" key={id}>
@@ -63,7 +80,12 @@ function RowInCart(props) {
             <td className="column-2">{title}</td>
             <td className="column-3">${price}</td>
             <td className="column-4">
-                <div className="flex-w bo5 of-hidden w-size17">
+                <div
+                    className="flex-w bo5 of-hidden w-size17"
+                    style={{
+                        marginLeft: "20%"
+                    }}
+                >
                     <button
                         className="btn-num-product-down color1 flex-c-m size7 bg8 eff2"
                         onClick={handleClicBattonMinus}
@@ -86,6 +108,18 @@ function RowInCart(props) {
                 </div>
             </td>
             <td className="column-5">${total}</td>
+            <td className="column-5">
+                <Badge
+                    pill variant="danger"
+                    style={{
+                        cursor: "pointer",
+                        marginLeft: "25%"
+                    }}
+                    onClick={handleClicBattonDel}
+                >
+                    X
+                </Badge>
+            </td>
         </tr>
     );
 }

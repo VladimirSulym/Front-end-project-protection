@@ -18,11 +18,18 @@ const initialStore = {
     },
     cart: [],
     quan: 0,
+    sort: '',
 };
 
 function rootReducer(store = initialStore, action) {
 
     switch (action.type) {
+        case ACT.SORT_PRICE:
+            return {
+            ...store,
+                sort: action.payload,
+            }
+
         case ACT.UPDATE_QUANCART:
             return {
             ...store,

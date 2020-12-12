@@ -1,5 +1,5 @@
 import React from "react";
-import {NAV, ROOT} from "../router/url";
+import {NAV, ROOT, CART} from "../router/url";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 import {useSelector} from "react-redux";
@@ -47,9 +47,11 @@ function WrapHeader (props) {
                 <span className="linedivide1"></span>
 
                 <div className="header-wrapicon2">
+                    <Link to={CART}>
                     <img src="./images/icons/icon-header-02.png" className="header-icon1 js-show-header-dropdown"
                          alt="ICON"/>
                     <span className="header-icons-noti">{quanCart}</span>
+                    </Link>
 
                     {/*<!-- Header cart noti -->*/}
                     <div className="header-cart header-dropdown">

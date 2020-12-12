@@ -88,6 +88,12 @@ export function updateQuanCart(payload) {
         payload,
     };
 }
+export function sortPrice(payload) {
+    return {
+        type: ACT.SORT_PRICE,
+        payload,
+    };
+}
 
 export function fetchData () {
     return (dispatcher) => {

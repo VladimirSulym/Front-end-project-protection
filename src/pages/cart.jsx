@@ -12,7 +12,7 @@ function Cart(props) {
     let quantInt = useSelector((store) => store.app.count);
     console.log('quantInt 1111111111 - >', quantInt)
 
-    let dataCart = [];
+    // let dataCart = cart;
 
     function assemblyCart () {
         let dataCartTemp = []
@@ -31,7 +31,8 @@ function Cart(props) {
         })
         return dataCartTemp;
     }
-    dataCart = assemblyCart();
+
+    let dataCart = assemblyCart();
 
     function carTotal () {
         let sum = 0;
@@ -66,6 +67,7 @@ function Cart(props) {
                             <th className="column-3">Цена</th>
                             <th className="column-4 p-l-70">Колличество</th>
                             <th className="column-5">Сумма</th>
+                            <th className="column-5">Удалить</th>
                         </tr>
 
                         {dataCart.map((item) =>{

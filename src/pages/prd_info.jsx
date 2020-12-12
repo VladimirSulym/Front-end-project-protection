@@ -28,7 +28,7 @@ function PrdInfo(props) {
         dispatch(updateCount(quant))
     }
     function handleClicBattonMinus() {
-        quant--;
+        quant > 0 ? quant-- : quant=0;
         dispatch(updateCount(quant))
     }
 

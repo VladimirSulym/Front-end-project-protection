@@ -8,7 +8,14 @@ import BrandFilter from "../Components/catalog/filter/brand";
 import PriceFilter from "../Components/catalog/filter/price";
 import ColorFilter from "../Components/catalog/filter/color";
 import SearchProducts from "../Components/catalog/filter/search";
-import {fetchFilterData, filterBrand, filterColor, filterPrice, updatePrice} from "../store/action_creatores";
+import {
+    fetchFilterData,
+    filterBrand,
+    filterColor,
+    filterPrice,
+    sortPrice,
+    updatePrice
+} from "../store/action_creatores";
 import {CATALOG} from "../router/url";
 import {Link} from "react-router-dom";
 
@@ -27,6 +34,8 @@ function Catalog(props) {
     console.log("priceRange 1111 --->>",priceRange)
 
     const rangeData = useSelector((store) => store.app.filter.price);
+
+    const sortPriceDate = useSelector((store) => store.app.sort);
 
     // console.log('filterCategory -> ',filterCategory);
     // console.log('props ->', props);
@@ -79,6 +88,16 @@ function Catalog(props) {
     function handleClickRessetPrice () {
         dispatch(filterPrice([+priceRange.priceMin, +priceRange.priceMax]))
     }
+
+    function onChangeHandler (e) {
+        dispatch(sortPrice(e.target.value));
+    }
+
+    if (sortPriceDate === "min2max"){
+            finalCatalog.sort((a, b) => a.price - b.price)
+        } else if (sortPriceDate === "max2min"){
+            finalCatalog.sort((a, b) => b.price - a.price)
+            } else finalCatalog.sort((a, b) => a.id - b.id)
 
     return (
         <>
@@ -202,23 +221,10 @@ function Catalog(props) {
                     <div className="flex-sb-m flex-w p-b-35">
                         <div className="flex-w">
                             <div className="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <select className="custom-select" name="sorting">
-                                    <option>Default Sorting</option>
-                                    <option>Popularity</option>
-                                    <option>Price: low to high</option>
-                                    <option>Price: high to low</option>
-                                </select>
-                            </div>
-
-                            <div className="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <select className="custom-select" name="sorting">
-                                    <option>Price</option>
-                                    <option>$0.00 - $50.00</option>
-                                    <option>$50.00 - $100.00</option>
-                                    <option>$100.00 - $150.00</option>
-                                    <option>$150.00 - $200.00</option>
-                                    <option>$200.00+</option>
-
+                                <select className="custom-select" name="sorting" onChange={onChangeHandler}>
+                                    <option selected="select" value="def">Цена по умолчанию</option>
+                                    <option value="min2max">Цена с мин до макс</option>
+                                    <option value="max2min">Цена с макс до мин</option>
                                 </select>
                             </div>
                         </div>
@@ -239,28 +245,6 @@ function Catalog(props) {
                             img_url = {item.img_url}
                             />
                         )}
-
-                        {/*{catalogList.map((item) => {*/}
-                        {/*    if (item.category === catID) {*/}
-                        {/*    return (*/}
-                        {/*        <Element*/}
-                        {/*            title = {item.title}*/}
-                        {/*            id = {item.id}*/}
-                        {/*            price = {item.price}*/}
-                        {/*            img_url = {item.img_url}*/}
-                        {/*        />*/}
-                        {/*    )} else {*/}
-                        {/*        if (catID === null) {*/}
-                        {/*            return (*/}
-                        {/*                <Element*/}
-                        {/*                    title={item.title}*/}
-                        {/*                    id={item.id}*/}
-                        {/*                    price={item.price}*/}
-                        {/*                    img_url={item.img_url}*/}
-                        {/*                />)*/}
-                        {/*        }*/}
-                        {/*    }*/}
-                        {/*})}*/}
 
                     </div>
 
