@@ -1941,13 +1941,21 @@ li.sale-noti > a {
     -ms-box-shadow: 0 0 0px 2px #dedede;
 }
 
-.checkbox-color-filter:checked + .color-filter {
+.checkbox-color-filter.active-color + .color-filter{
   box-shadow: 0 0 0px 2px #18dd44;
   -moz-box-shadow: 0 0 0px 2px #18dd44;
   -webkit-box-shadow: 0 0 0px 2px #18dd44;
   -o-box-shadow: 0 0 0px 2px #18dd44;
   -ms-box-shadow: 0 0 0px 2px #18dd44;
 }
+
+/*.checkbox-color-filter:checked + .color-filter {*/
+/*  box-shadow: 0 0 0px 2px #18dd44;*/
+/*  -moz-box-shadow: 0 0 0px 2px #18dd44;*/
+/*  -webkit-box-shadow: 0 0 0px 2px #18dd44;*/
+/*  -o-box-shadow: 0 0 0px 2px #18dd44;*/
+/*  -ms-box-shadow: 0 0 0px 2px #18dd44;*/
+/*}*/
 
 /*[ Pagination ]
 ///////////////////////////////////////////////////////////

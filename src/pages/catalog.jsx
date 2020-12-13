@@ -9,11 +9,12 @@ import PriceFilter from "../Components/catalog/filter/price";
 import ColorFilter from "../Components/catalog/filter/color";
 import SearchProducts from "../Components/catalog/filter/search";
 import {
+    activePagination,
     fetchFilterData,
     filterBrand,
     filterColor,
     filterPrice,
-    sortPrice,
+    sortPrice, updateCart,
 } from "../store/action_creatores";
 import {CATALOG} from "../router/url";
 import {Link} from "react-router-dom";
@@ -36,6 +37,7 @@ function Catalog(props) {
     const rangeData = useSelector((store) => store.app.filter.price);
 
     const sortPriceDate = useSelector((store) => store.app.sort);
+    const activePaginationData = useSelector((store) => store.app.activePagination);
 
     // console.log('filterCategory -> ',filterCategory);
     // console.log('props ->', props);
@@ -113,6 +115,19 @@ function Catalog(props) {
 
     console.log('paginationData =>',paginationData);
 
+    const finalCatalogTotalRes = finalCatalog.length
+
+    if (paginationData.length > 1) {
+        console.log('paginationData.length =>', paginationData.length);
+        console.log('activePaginationData =>', activePaginationData);
+        console.log('finalCatalog Before Slice =>',finalCatalog);
+        finalCatalog = finalCatalog.slice(((activePaginationData-1)*12),((activePaginationData-1)*12)+12);
+        console.log('finalCatalog.Slice =>',finalCatalog);
+    }
+
+    useEffect(()=>{dispatch(activePagination(1))
+        return (()=>{dispatch(activePagination(1))})
+    },[]);
 
     return (
         <>
@@ -245,7 +260,8 @@ function Catalog(props) {
                         </div>
 
                         <span className="s-text8 p-t-5 p-b-5">
-							Отражаются 1–12 из {finalCatalog.length} результатов
+							Отражаются {((activePaginationData-1)*12)+1}–
+                            {(((activePaginationData-1)*12)+12)>finalCatalogTotalRes ? finalCatalogTotalRes : (((activePaginationData-1)*12)+12)} из {finalCatalogTotalRes} результатов
 						</span>
                     </div>
 
@@ -267,12 +283,12 @@ function Catalog(props) {
 
                     <div className="pagination flex-m flex-w p-t-26">
 
-                        {
+                        { paginationData.length > 1 ?
                             paginationData.map((item) =>
                                 <PaginationPage
                                 number_page = {item}
                                 />
-                            )
+                            ) : ''
                         }
 
                     </div>

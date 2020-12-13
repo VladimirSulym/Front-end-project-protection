@@ -14,4 +14,5 @@ export const RESET_COUNT = 'RESET_COUNT';
 export const UPDATE_CART = 'UPDATE_CART';
 export const UPDATE_QUANCART = 'UPDATE_QUANCART';
 export const SORT_PRICE = 'SORT_PRICE';
+export const ACTIVE_PAGINATION = 'ACTIVE_PAGINATION';
 

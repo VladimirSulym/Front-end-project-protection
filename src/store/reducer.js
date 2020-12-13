@@ -19,11 +19,18 @@ const initialStore = {
     cart: [],
     quan: 0,
     sort: '',
+    activePagination: 1
 };
 
 function rootReducer(store = initialStore, action) {
 
     switch (action.type) {
+        case ACT.ACTIVE_PAGINATION:
+            return {
+            ...store,
+                activePagination: action.payload,
+            }
+
         case ACT.SORT_PRICE:
             return {
             ...store,

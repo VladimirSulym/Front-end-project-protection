@@ -94,6 +94,12 @@ export function sortPrice(payload) {
         payload,
     };
 }
+export function activePagination(payload) {
+    return {
+        type: ACT.ACTIVE_PAGINATION,
+        payload,
+    };
+}
 
 export function fetchData () {
     return (dispatcher) => {

@@ -1,11 +1,16 @@
 import React from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {filterColor} from "../../../store/action_creatores";
 
 function ColorFilter(props) {
     const {id, color} = props;
 
     const dispatch = useDispatch();
+    const activeColorData = useSelector((store) => store.app.filter.color);
+
+     let changeClass = '';
+
+     activeColorData === id ? changeClass = 'active-color' : changeClass = '';
 
     function handleClick (e) {
         dispatch(filterColor(e.target.getAttribute('idColor')))
@@ -15,7 +20,7 @@ function ColorFilter(props) {
         <>
                 <li className="m-r-10">
                     <input
-                        className="checkbox-color-filter"
+                        className={`checkbox-color-filter ${changeClass}`}
                         id={`color-filter${id}`}
                         type="checkbox"
                         name={`color-filter${id}`}
