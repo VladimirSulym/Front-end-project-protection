@@ -31,7 +31,7 @@ function Root(props) {
 
         {/*<!-- Blog -->*/}
 
-        <Blog />
+        {/*<Blog />*/}
 
         {/*<!-- Shipping -->*/}
         <Shipping />

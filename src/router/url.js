@@ -25,10 +25,10 @@ export const NAV = [
         title: 'Корзина',
         url: CART
     },
-    {
-        title: 'Блог',
-        url: BLOG
-    },
+    // {
+    //     title: 'Блог',
+    //     url: BLOG
+    // },
     {
         title: 'О нас',
         url: ABOUT
