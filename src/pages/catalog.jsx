@@ -70,14 +70,14 @@ function Catalog(props) {
     if (rangeData) {
         finalCatalog = finalCatalog.filter((item) => (item.price >= rangeData[0] && item.price <= rangeData[1]));
     }
-    let priceMin = 0;
-    let priceMax = 1000;
-
-    if (priceRange){
-        priceMin = +priceRange.priceMin;
-        priceMax = +priceRange.priceMax
-        console.log("OBNOVILLL")
-    }
+    // let priceMin = 0;
+    // let priceMax = 1000;
+    //
+    // if (priceRange){
+    //     priceMin = +priceRange.priceMin;
+    //     priceMax = +priceRange.priceMax
+    //     console.log("OBNOVILLL")
+    // }
 
     function handleClickRessetColor (e) {
         dispatch(filterColor(e.target.getAttribute('')))
@@ -193,8 +193,8 @@ function Catalog(props) {
                                 Цена
                             </div>
                                 <PriceFilter
-                                priceMin = {+priceMin}
-                                priceMax = {+priceMax}
+                                // priceMin = {+priceMin}
+                                // priceMax = {+priceMax}
                                 />
                             <div className="flex-sb-m flex-w p-t-16">
                                 <div className="w-size11">

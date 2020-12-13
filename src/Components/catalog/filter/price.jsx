@@ -6,7 +6,7 @@ import {filterPrice} from "../../../store/action_creatores";
 
 function PriceFilter(props) {
     console.log("props =>",props);
-    const {priceMin, priceMax} = props;
+    // const {priceMin, priceMax} = props;
 
     const Slider = require('rc-slider');
     const createSliderWithTooltip = Slider.createSliderWithTooltip;
@@ -14,7 +14,24 @@ function PriceFilter(props) {
 
     const dispatch = useDispatch();
 
-    useSelector((store) => store.app.priceRange);
+    const priceRange = useSelector((store) => store.app.priceRange[0]);
+    console.log("priceRange in price" , priceRange)
+
+    // const rangeData = useSelector((store) => store.app.filter.price);
+    // console.log("rangeData in price" , rangeData)
+    //
+
+    let priceMin = 0;
+    let priceMax = 1000;
+
+    if (Object.keys(priceRange).length > 0){
+        priceMin = +priceRange.priceMin
+        priceMax = +priceRange.priceMax
+        dispatch(filterPrice([+priceMin, +priceMax]))
+        console.log("OBNOVILLL")
+        console.log("priceMin" , priceMin)
+        console.log("priceMax" , priceMax)
+    }
 
     useEffect(()=>{
         dispatch(filterPrice([+priceMin, +priceMax]))
@@ -28,7 +45,7 @@ function PriceFilter(props) {
             <Range
                 min={+priceMin}
                 max={+priceMax}
-                // value={[priceRange[0],priceRange[1]]}
+                // value={[+rangeData[0],+rangeData[1]]}
                 defaultValue={[+priceMin, +priceMax]}
                 onChange={handleRangeMove}
             />

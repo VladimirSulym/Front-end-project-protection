@@ -1,7 +1,22 @@
 import React from "react";
 import dayjs from "dayjs";
+import FooterCategory from "./footer/footer_category";
+import {useSelector} from "react-redux";
+import {NAV} from "../router/url";
+import {Link} from "react-router-dom";
 
 function Footer () {
+    const categoryList = useSelector((store) => store.app.categoryList);
+
+    function renderNavItem (item) {
+        return (
+            <li className="p-b-9" key={item.url}>
+                <Link className="s-text7" to={item.url}>{item.title}</Link>
+            </li>
+        )
+
+    }
+
     return (
         <footer className="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
             <div className="flex-w p-b-90">
@@ -34,29 +49,13 @@ function Footer () {
                     </h4>
 
                     <ul>
-                        <li className="p-b-9">
-                            <a href="#" className="s-text7">
-                                Men
-                            </a>
-                        </li>
-
-                        <li className="p-b-9">
-                            <a href="#" className="s-text7">
-                                Women
-                            </a>
-                        </li>
-
-                        <li className="p-b-9">
-                            <a href="#" className="s-text7">
-                                Dresses
-                            </a>
-                        </li>
-
-                        <li className="p-b-9">
-                            <a href="#" className="s-text7">
-                                Sunglasses
-                            </a>
-                        </li>
+                        {categoryList.map((item) => {
+                            return (<FooterCategory
+                                    title = {item.title}
+                                    url = {item.url}
+                                    id = {item.id}
+                                />
+                            )})}
                     </ul>
                 </div>
 
@@ -66,29 +65,9 @@ function Footer () {
                     </h4>
 
                     <ul>
-                        <li className="p-b-9">
-                            <a href="#" className="s-text7">
-                                Search
-                            </a>
-                        </li>
-
-                        <li className="p-b-9">
-                            <a href="#" className="s-text7">
-                                About Us
-                            </a>
-                        </li>
-
-                        <li className="p-b-9">
-                            <a href="#" className="s-text7">
-                                Contact Us
-                            </a>
-                        </li>
-
-                        <li className="p-b-9">
-                            <a href="#" className="s-text7">
-                                Returns
-                            </a>
-                        </li>
+                        {
+                            NAV.map(renderNavItem)
+                        }
                     </ul>
                 </div>
 

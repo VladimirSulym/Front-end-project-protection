@@ -8,7 +8,7 @@ const initialStore = {
     categoryList: [],
     colorList: [],
     brandList: [],
-    priceRange: [],
+    priceRange: [{}],
     count: 0,
     filter: {
         category:'',
