@@ -129,6 +129,10 @@ function Catalog(props) {
         return (()=>{dispatch(activePagination(1))})
     },[]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <>
         {/*<!-- Title Page -->*/}

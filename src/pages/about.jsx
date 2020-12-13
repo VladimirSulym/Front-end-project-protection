@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import stiry from './img/story.jpg';
 import about from './img/about.jpg';
 
 function About(props) {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <>
         {/*<!-- Title Page -->*/}

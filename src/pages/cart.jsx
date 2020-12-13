@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import RowInCart from "../Components/cart/row_in_cart";
 import banner1 from "../Components/cart/img/baner1.jpg";
@@ -25,7 +25,6 @@ function Cart(props) {
                         total: item.price*item1.quant
                     }
                     dataCartTemp = dataCartTemp.concat(item);
-                    console.log('dataCartTemp = > ',dataCartTemp)
                 }
             })
         })
@@ -42,7 +41,9 @@ function Cart(props) {
         return sum;
     }
 
-    console.log('dataCart !!!!!!!!!! = > ',dataCart)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <>

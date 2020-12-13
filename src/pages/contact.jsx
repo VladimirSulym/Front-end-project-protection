@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import contact from './img/contact.jpg';
 import GoogleMapReact from 'google-map-react';
 import AnyReactComponent from "../Components/AnyReactComponent";
 
 function Contact(props) {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const center = {
             lat: 59.95,

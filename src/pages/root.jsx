@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Slide1 from "../Components/slide1";
 import Banner from "../Components/banner";
 import NewProduct from "../Components/new_product";
@@ -7,6 +7,9 @@ import Blog from "../Components/blog";
 import Shipping from "../Components/shipping";
 
 function Root(props) {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <>

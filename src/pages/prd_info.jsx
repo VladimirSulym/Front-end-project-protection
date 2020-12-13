@@ -61,6 +61,10 @@ function PrdInfo(props) {
         return (()=>{dispatch(updateCart(cart))})
     },[]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <>
         {/*<!-- breadcrumb -->*/}
